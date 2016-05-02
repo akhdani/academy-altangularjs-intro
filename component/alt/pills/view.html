@@ -1,0 +1,14 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav nav-pills">
+            <li data-ng-repeat="item in this[$attrs.scope].steps" data-ng-class="{true: 'active'}[item.isactive]">
+                <a href="" data-ng-click="this[$attrs.scope].select($index)" data-toggle="tab" aria-expanded="true">{{ item.title }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="tab-content">
+    <div class="col-md-12" data-ng-transclude="">
+    </div>
+</div>

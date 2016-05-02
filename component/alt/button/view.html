@@ -1,0 +1,7 @@
+<input data-ng-if="type == 'submit'" type="submit" data-ng-class="class || 'btn btn-primary'" value="{{ title }}" data-ng-click="click()" data-ng-disabled="disabled || isclicked"/>
+
+<a data-ng-if="type != 'submit'" data-ng-class="class || 'btn btn-primary'" type="button" title="{{ description }}" data-ng-click="click()" data-ng-href="{{ href }}" target="{{ target }}" data-ng-disabled="disabled || isclicked">
+    <i data-ng-class="icon"></i>
+    <span data-ng-if="title != '' && icon != ''">&nbsp;</span>
+    {{ title }}
+</a>

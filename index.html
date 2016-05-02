@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="Alt" xmlns:ng="http://angularjs.org">
+<head lang="en">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/lib/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/css/roboto.css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/css/components.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/css/plugins.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/css/layout.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/css/darkblue.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/css/simple-line-icons.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="asset/css/custom-style.css">
+    <!--<link type="text/css" rel="stylesheet" media="all" href="asset/css/style.css">-->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!--[if lt IE 9]>
+    <link type="text/css" rel="stylesheet" media="all" href="asset/css/style-ie8.css">
+    <script type="text/javascript" src="asset/lib/html5shiv/dist/html5shiv.min.js"></script>
+    <script type="text/javascript" src="asset/lib/respond/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="login" data-ng-class="{true:'page-header-fixed page-sidebar-closed-hide-logo page-content-white', false: 'login'}[template == 'content']">
+    <div class="page-header navbar navbar-fixed-top" data-ng-show="template == 'content'">
+        <!-- BEGIN HEADER INNER -->
+        <div class="page-header-inner">
+            <div class="page-logo">
+                <img src="asset/img/logo.png" alt="logo" width="20" class="logo-default" style="margin-top: -3px">
+                {{ alt.description }}
+                <div class="menu-toggler sidebar-toggler" data-ng-click="toggleMenu()"></div>
+            </div>
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle" onclick="document.getElementById('top-menu-notif').classList.toggle('visible')">
+                            <i class="fa fa-bell" style="color: #FFF"></i>
+                            <span class="label label-danger">{{$notification.count || '0'}}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default" id="top-menu-notif">
+                            <div data-alt-component="alt/notification" data-scope="notif" style="padding-top: 9px; padding-bottom: 7px;"></div>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-user" id="top-menu-user">
+                        <a href="javascript:;" class="dropdown-toggle" onclick="document.getElementById('top-menu-user').classList.toggle('open')">
+                            <img alt="" class="img-circle" src="asset/img/logo.jpg" height="20px">
+                            <span class="username"> {{ $auth.userdata.name }} </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a>
+                                    <i class="fa fa-lock"></i> Ganti Password
+                                </a>
+                            </li>
+                            <li>
+                                <a data-ng-href="{{ alt.baseUrl }}auth/logout">
+                                    <i class="fa fa-power-off"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix" data-ng-if="template == 'content'"></div>
+
+    <div class="page-container" data-ng-if="template == 'content'">
+        <div class="page-sidebar-wrapper">
+            <div id="page-sidebar" class="page-sidebar navbar-collapse collapse">
+                <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" data-ng-include="'menu/' + alt.menu + '.html'">
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <div class="container-fluid" style="position: fixed; right: 0; z-index: 99999; width: 100%; padding-left: 10px; padding-right: 10px">
+                    <div class="row" data-ng-repeat="item in $alert.items">
+                        <div class="pull-right col-xs-12 col-sm-10 col-md-6 col-lg-4">
+                            <div data-alt-transclude="alt/alert" data-scope="item" data-id="{{ $index }}">{{ item.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div data-ng-view></div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ng-show="template == 'full'">
+        <div class="container">
+            <div style="position: fixed; right: 0; z-index: 99999; width: 100%; padding-left: 10px; padding-right: 10px">
+                <div class="row">
+                    <div class="col-md-12" data-ng-repeat="item in $alert.items">
+                        <div data-alt-transclude="alt/alert" data-scope="item" data-id="{{ $index }}">{{ item.message }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-ng-view></div>
+    </div>
+
+    <div data-alt-component="alt/loading" data-scope="$loading"></div>
+    <div data-alt-component="alt/popup" data-scope="$popup"></div>
+
+    <div class="page-footer" data-ng-if="template == 'content'">
+        <div class="page-footer-inner">
+            2015 © {{ alt.title }}. {{ alt.description }}.
+        </div>
+        <div class="scroll-to-top" style="display: block;">
+            <i class="icon-arrow-up" onclick="backToTop()"></i>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="asset/lib/alt-angularjs/dist/alt.bundle.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="asset/lib/requirejs/require.js"></script>
+    <script type="text/javascript">
+        requirejs.config({
+            urlArgs: alt.urlArgs,
+            waitSeconds: 30,
+            paths : {
+                text: 'asset/lib/requirejs-plugins/lib/text',
+                async: 'asset/lib/requirejs-plugins/src/async',
+                json: 'asset/lib/requirejs-plugins/src/json'
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<section id="page-title" class="row">
+    <div class="col-md-6">
+        <h1>{{ title }}</h1>
+        <p class="lead">{{ description }}</p>
+    </div>
+
+    <div class="col-md-6">
+        <ol class="breadcrumb pull-right no-margin-bottom">
+            <li data-ng-repeat="item in breadcrumb" data-ng-class="{true: 'active'}[item.isactive]">
+                <a data-ng-if="!item.isactive" data-ng-href="{{ item.url }}">{{ item.title }}</a>
+                <span data-ng-if="item.isactive">{{ item.title }}</span>
+            </li>
+        </ol>
+    </div>
+</section>

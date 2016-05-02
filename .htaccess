@@ -1,0 +1,9 @@
+<IfModule mod_deflate.c>
+    #apache2.4.6
+    <filesMatch "\.(js|css|json|xml|txt|html|php)$">
+        SetOutputFilter DEFLATE
+    </filesMatch>
+    #apache2.2
+    #SetOutputFilter DEFLATE
+    #AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript application/json
+</IfModule>

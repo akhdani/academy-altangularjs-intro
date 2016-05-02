@@ -1,0 +1,8 @@
+{
+  "name": "pusharlis",
+  "version": "1.0.0",
+  "dependencies": {
+    "alt-angularjs": "^5.0.10",
+    "bootstrap": "^3.3.6"
+  }
+}

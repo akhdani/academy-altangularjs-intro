@@ -1,0 +1,6 @@
+<div data-ng-class="['alert-' + this[$attrs.scope].type, this[$attrs.scope].iscloseable ? 'alert-dismissable' : '']" role="alert" class="alert alert-block" data-ng-if="this[$attrs.scope].isshow && this[$attrs.scope].skip == 0">
+    <button data-ng-show="this[$attrs.scope].iscloseable" type="button" data-ng-click="this[$attrs.scope].hide()" class="close">
+        <span aria-hidden="true"><i class="fa fa-close"></i></span>
+    </button>
+    <div data-ng-transclude="data-ng-transclude"></div>
+</div>

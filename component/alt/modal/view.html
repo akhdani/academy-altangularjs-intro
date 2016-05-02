@@ -1,0 +1,17 @@
+<div class="modal fade in" tabindex="-1" role="basic" aria-hidden="true" data-ng-show="this[$attrs.scope].isshow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" data-ng-click="this[$attrs.scope].close()" class="close">&times;</button>
+                <h4>{{ this[$attrs.scope].header }}</h4>
+            </div>
+            <div data-ng-transclude="data-ng-transclude" class="modal-body" style="{{ this[$attrs.scope].style }}"></div>
+            <div class="modal-footer">
+                <div data-ng-repeat="btn in this[$attrs.scope].buttons" style="display: inline-block;">
+                    <div data-alt-component="alt/button" data-scope="btn"></div> &nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-ng-show="this[$attrs.scope].isshow" data-ng-click="this[$attrs.scope].close()" class="modal-backdrop fade in"></div>

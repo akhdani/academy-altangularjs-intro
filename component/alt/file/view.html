@@ -1,0 +1,10 @@
+<input data-ng-if="isupload" type="file" id="{{ elementid }}" name="{{ name }}" accept="{{ accept }}" onchange="angular.element(this).scope().onchange(this)" style="{{ style }}" data-ng-required="required" data-ng-disabled="disabled" class="form-control {{ class }}"/>
+<div data-ng-if="isview" data-ng-repeat="file in data">
+    <!--<div class="input-group">-->
+    <a data-ng-if="file.filepath" style="overflow-y: auto" data-ng-href="{{alt.serverUrl + file.filepath}}" class="form-control" target="_blank">{{file.name}}</a>
+    <!--<span class="input-group-btn">-->
+        <!--<button class="btn btn-danger" type="button"><i class="fa fa-remove"></i></button>-->
+    <!--</span>-->
+    <!--</div>-->
+</div>
+<div data-ng-if="isview && !isupload && (!data || data.length == 0)" class="form-control"></div>

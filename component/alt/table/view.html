@@ -1,0 +1,41 @@
+<style>
+    thead {
+        cursor: pointer;
+    }
+</style>
+<div id="{{ this[$attrs.scope].id }}" data-ng-transclude=""></div>
+
+<div class="nav pull-left" data-ng-if="this[$attrs.scope].isshowviewdata">
+    <ul class="pagination">
+        <li class="disabled">
+            <a href="">
+                <span aria-hidden="true">Jumlah data yang ditampilkan: </span>
+            </a>
+        </li>
+        <li data-ng-repeat="view in this[$attrs.scope].view_data track by $index" data-ng-class="{true: 'active', false: ''}[this[$attrs.scope].limit == view.value]">
+            <a href="" data-ng-click="this[$attrs.scope].view(view.value)">
+                {{ view.label }}
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="nav pull-right" data-ng-if="this[$attrs.scope].isshowpagination">
+    <ul class="pagination">
+        <li data-ng-class="{true: 'disabled'}[this[$attrs.scope].current_page == 1 || this[$attrs.scope].total_page == 0]">
+            <a href="" aria-label="Previous" data-ng-click="this[$attrs.scope].page(this[$attrs.scope].current_page-1)">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li data-ng-repeat="pagenumber in this[$attrs.scope].pager track by $index" data-ng-class="{true: 'active', false: ''}[this[$attrs.scope].current_page == pagenumber]">
+            <a href="" data-ng-click="this[$attrs.scope].page(pagenumber)">
+                {{ pagenumber }}
+            </a>
+        </li>
+        <li data-ng-class="{true: 'disabled'}[this[$attrs.scope].current_page == this[$attrs.scope].total_page || this[$attrs.scope].total_page == 0]">
+            <a href="" aria-label="Next" data-ng-click="this[$attrs.scope].page(this[$attrs.scope].current_page+1)">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</div>

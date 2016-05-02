@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" data-ng-click="$parent.$parent[$attrs.scope].select($attrs.id)">
+        <h4 class="panel-title">
+            <a role="button" href="" data-toggle="collapse">
+                {{ $parent.$parent[$attrs.scope].panels[$attrs.id].title }}
+            </a>
+        </h4>
+    </div>
+    <div class="panel-collapse" data-ng-class="{true: '', false: 'collapse'}[$parent.$parent[$attrs.scope].panels[$attrs.id].isactive]">
+        <div class="panel-body" data-ng-transclude="">
+
+        </div>
+    </div>
+</div>

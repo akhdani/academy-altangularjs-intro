@@ -1,0 +1,27 @@
+<li style="color: #ccc; text-transform: uppercase; font-size: 0.8em" data-ng-if="$notification.notif.permohonan">
+    Permohonan Perjanjian
+</li>
+<li data-ng-repeat="(key, val) in $notification.notif.permohonan">
+    <a class="btn btn-flat" data-ng-href="{{setting.permohonan[key]['url']}}" data-ng-click="closeMenu()">
+        {{setting.permohonan[key]['label']}}
+        <span class="badge">{{val}}</span>
+    </a>
+</li>
+<li style="color: #ccc; text-transform: uppercase; font-size: 0.8em" data-ng-if="$notification.notif.prapenugasan">
+    Prapenugasan
+</li>
+<li data-ng-repeat="(key, val) in $notification.notif.prapenugasan">
+    <a class="btn btn-flat" data-ng-href="{{setting.prapenugasan[key]['url']}}" data-ng-click="closeMenu()">
+        {{setting.prapenugasan[key]['label']}}
+        <span class="badge">{{val}}</span>
+    </a>
+</li>
+<li style="color: #ccc; text-transform: uppercase; font-size: 0.8em" data-ng-if="$notification.notif.penugasan">
+    Penugasan
+</li>
+<li data-ng-repeat="(key, val) in $notification.notif.penugasan">
+    <a class="btn btn-flat" data-ng-href="{{setting.penugasan[key]['url']}}" data-ng-click="closeMenu()">
+        {{setting.penugasan[key]['label']}}
+        <span class="badge">{{val}}</span>
+    </a>
+</li>

@@ -1,0 +1,16 @@
+<div class="page-bar ng-scope">
+    <ul class="page-breadcrumb">
+        <li data-ng-repeat="item in data" data-ng-class="{true: 'active'}[item.isactive]">
+            <a data-ng-if="!item.isactive" data-ng-href="{{ item.url }}">{{ item.title }}</a>
+            <span data-ng-if="item.isactive">{{ item.title }}</span>
+            <i class="fa fa-angle-right"></i>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <div id="dashboard-report-range" class="pull-right tooltips btn btn-sm" data-container="body" data-placement="bottom" data-original-title="Change dashboard date range">
+            <span class="thin uppercase hidden-xs">
+                {{ time }}
+            </span>
+        </div>
+    </div>
+</div>
